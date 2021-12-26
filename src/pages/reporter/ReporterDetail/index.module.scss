@@ -1,0 +1,25 @@
+.detail {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+}
+
+.tabs {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  :global(.arco-tabs-content) {
+    flex: 1;
+  }
+  
+  :global(.arco-tabs-content-item),
+  :global(.arco-tabs-content-inner), 
+  :global(.arco-tabs-pane) {
+    height: 100%;
+  }
+} 

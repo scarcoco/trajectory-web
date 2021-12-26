@@ -15,7 +15,7 @@ export default function ReporterList() {
       title: "名字",
       dataIndex: "Name",
       render(Name, { Id }) {
-        return <LinkName to={`/reporter/:${Id}/detail`} text={Name}/>;
+        return <LinkName to={`/reporter/${Id}/detail`} text={Name}/>;
       },
     },
     {

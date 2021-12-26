@@ -1,0 +1,16 @@
+.dashboard {
+  padding: 16px 20px;
+}
+
+.head {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+}
