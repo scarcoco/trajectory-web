@@ -1,0 +1,11 @@
+.name {
+  text-decoration: none;
+  
+  &:link, &:visited {
+    color: rgba(var(--primary-5));
+  }
+  
+  &:hover, &:active {
+    color: rgba(var(--primary-7));
+  }
+}
