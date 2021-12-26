@@ -7,7 +7,7 @@ import { chart1Data, chart2Data } from "./data";
 
 export default function Home() {
   return (
-    <Dashboard title="Dashboard">
+    <Dashboard title="数据概览">
       <Grid.Row>
       <Grid.Col span={12}>
         <Panel title="用户增长图">
