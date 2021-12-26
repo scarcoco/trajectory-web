@@ -1,5 +1,10 @@
 import React from "react";
-import { Table, TableColumnProps } from "@arco-design/web-react";
+import {
+  Button,
+  Message,
+  Table,
+  TableColumnProps,
+} from "@arco-design/web-react";
 import { Reporter } from "../../../apis/reporter";
 import { PageList } from "../../../components/Page";
 import dataList from "./data";
@@ -15,7 +20,7 @@ export default function ReporterList() {
       title: "名字",
       dataIndex: "Name",
       render(Name, { Id }) {
-        return <LinkName to={`/reporter/${Id}/detail`} text={Name}/>;
+        return <LinkName to={`/reporter/${Id}/detail`} text={Name} />;
       },
     },
     {
@@ -34,11 +39,42 @@ export default function ReporterList() {
       title: "描述",
       dataIndex: "Description",
     },
+
+    {
+      title: "操作",
+      dataIndex: "Operate",
+      render() {
+        const handleEdit = () => {
+          Message.success("编辑操作");
+        };
+        const handleDelete = () => {
+          Message.success("删除操作");
+        };
+        return (
+          <>
+            <LinkName
+              onClick={handleEdit}
+              style={{ marginRight: 8 }}
+              text="编辑"
+            />
+            <LinkName onClick={handleDelete} text="删除" />
+          </>
+        );
+      },
+    },
   ];
+  const handleCreate = () => {
+    Message.success("创建操作");
+  };
 
   return (
     <PageList title="上报点管理">
-      
+      <div style={{ marginBottom: 16 }}>
+        <Button type="primary" onClick={handleCreate}>
+          创建上报点
+        </Button>
+      </div>
+
       <Table rowKey="Id" columns={columns} data={dataList} />
     </PageList>
   );
