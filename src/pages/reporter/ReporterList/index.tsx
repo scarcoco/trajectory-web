@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Message,
@@ -7,8 +7,9 @@ import {
 } from "@arco-design/web-react";
 import { Reporter } from "../../../apis/reporter";
 import { PageList } from "../../../components/Page";
-import dataList from "./data";
 import LinkName from "../../../components/LinkName";
+import axios from 'axios'
+import { BaseURL } from "../../../const";
 
 export default function ReporterList() {
   const columns: TableColumnProps<Reporter>[] = [
@@ -66,6 +67,13 @@ export default function ReporterList() {
   const handleCreate = () => {
     Message.success("创建操作");
   };
+  const [list, setList] = useState<Reporter[]>([]);
+
+  useEffect(() => {
+    axios.get(`${BaseURL}/api/v1/reporter/list`).then(({ data }) => {
+      setList(data.Data.List)
+    })
+  }, [])
 
   return (
     <PageList title="上报点管理">
@@ -75,7 +83,7 @@ export default function ReporterList() {
         </Button>
       </div>
 
-      <Table rowKey="Id" columns={columns} data={dataList} />
+      <Table rowKey="Id" columns={columns} data={list} />
     </PageList>
   );
 }
